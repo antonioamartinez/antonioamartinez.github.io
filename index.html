@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="Antonio Martinez">
+<meta property="og:description" content="Senior Principal Software Engineer. C#/.NET and WPF desktop application architecture.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://antonioamartinez.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d1726'/%3E%3Crect x='11' y='11' width='10' height='10' fill='%23e8590c' transform='rotate(45 16 16)'/%3E%3C/svg%3E">
+<style>*,*::before,*::after{box-sizing:border-box}html{-webkit-text-size-adjust:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Antonio Martinez</title>
+<meta name="description" content="Antonio Martinez, Senior Principal Software Engineer. C#/.NET and WPF desktop application architecture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a night-chart hero band with drifting terrain contours, a results strip,
+   case studies, then the record. One column on phones. */
+:root {
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --fg: #14171d;
+  --muted: #586070;
+  --rule: #dde1e7;
+  --accent: #d9480f;          /* international orange */
+  --accent-ink: #b33a08;
+  --accent-soft: #fdebe1;
+  --fill-bg: #fff1bf;
+  --fill-fg: #6b4e00;
+  --shadow: 0 1px 2px rgba(20,23,29,.05), 0 8px 24px -12px rgba(20,23,29,.18);
+  /* hero is a committed night look in both themes */
+  --hero-bg: #0d1726;
+  --hero-fg: #eef2f7;
+  --hero-muted: #9fb0c6;
+  --hero-line: #2b4a6e;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1218; --surface: #171b23; --fg: #e7eaf0; --muted: #98a1b0; --rule: #272d38;
+    --accent: #ff7a3d; --accent-ink: #ff9a6a; --accent-soft: #34201a;
+    --fill-bg: #3b3112; --fill-fg: #f3d77a;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.7);
+    --hero-bg: #0a111c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1218; --surface: #171b23; --fg: #e7eaf0; --muted: #98a1b0; --rule: #272d38;
+  --accent: #ff7a3d; --accent-ink: #ff9a6a; --accent-soft: #34201a;
+  --fill-bg: #3b3112; --fill-fg: #f3d77a;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 28px -14px rgba(0,0,0,.7);
+  --hero-bg: #0a111c;
+  color-scheme: dark;
+}
+
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--accent-ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; background: var(--hero-bg); color: var(--hero-fg); overflow: hidden; isolation: isolate; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.hero::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, var(--hero-bg) 0%, rgba(13,23,38,.82) 45%, rgba(13,23,38,0) 100%);
+}
+.hero .wrap { padding-block: 56px 64px; display: grid; gap: 28px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+.mark {
+  font-family: var(--display); font-weight: 800; font-size: 15px; letter-spacing: .14em;
+  display: inline-flex; align-items: center; gap: 10px; color: var(--hero-fg);
+}
+.mark i { width: 10px; height: 10px; background: var(--accent); display: inline-block; transform: rotate(45deg); }
+.status {
+  font-family: var(--mono); font-size: 12px; color: var(--hero-muted); letter-spacing: .06em;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #3ccf8e; box-shadow: 0 0 0 3px rgba(60,207,142,.18); }
+h1 {
+  font-family: var(--display); font-weight: 850; font-stretch: 112%;
+  font-size: clamp(44px, 8.5vw, 92px); line-height: .94; letter-spacing: -0.025em;
+  margin: 24px 0 0; text-wrap: balance; max-width: 12ch;
+}
+.title-line {
+  font-family: var(--mono); font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent); margin: 0;
+}
+.intro { font-size: clamp(18px, 2.1vw, 21px); line-height: 1.55; max-width: 46ch; margin: 0; color: var(--hero-fg); text-wrap: pretty; }
+.intro span { color: var(--hero-muted); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px;
+  border-radius: 6px; font: 600 15px var(--body); text-decoration: none; cursor: pointer;
+  border: 1px solid transparent; transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: #e8590c; color: #fff; }
+.btn-ghost { background: rgba(255,255,255,.04); color: var(--hero-fg); border-color: rgba(159,176,198,.35); }
+.btn-ghost:hover { border-color: var(--hero-fg); color: var(--hero-fg); }
+.btn svg { width: 16px; height: 16px; flex: none; }
+.email-text { font-family: var(--mono); font-size: 13.5px; color: var(--hero-muted); user-select: all; overflow-wrap: anywhere; }
+
+/* ---------- Results strip ---------- */
+.results { margin-top: -28px; position: relative; z-index: 2; }
+.results-grid {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: var(--surface); border-radius: 10px; box-shadow: var(--shadow); border: 1px solid var(--rule);
+}
+.result { padding: 22px 24px; display: grid; gap: 6px; align-content: start; }
+.result + .result { border-left: 1px solid var(--rule); }
+.result b {
+  font-family: var(--display); font-weight: 800; font-stretch: 108%; font-size: 34px; line-height: 1;
+  letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--fg);
+}
+.result b em { font-style: normal; color: var(--accent); }
+.result span { font-size: 14px; color: var(--muted); line-height: 1.45; }
+
+/* ---------- Sections ---------- */
+main { padding-block: 72px 40px; display: grid; gap: 88px; }
+section { display: grid; gap: 28px; }
+.eyebrow {
+  font-family: var(--mono); font-weight: 500; font-size: 12px; text-transform: uppercase;
+  letter-spacing: .16em; color: var(--accent-ink); margin: 0; display: flex; align-items: center; gap: 14px;
+}
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+h2 { font-family: var(--display); font-weight: 800; font-stretch: 106%; font-size: clamp(28px, 3.6vw, 38px); line-height: 1.1; letter-spacing: -0.015em; margin: -12px 0 0; text-wrap: balance; max-width: 22ch; }
+
+/* Case studies */
+.cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.case {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 26px;
+  display: grid; gap: 18px; align-content: start; box-shadow: var(--shadow);
+  transition: transform .2s ease, border-color .2s ease;
+}
+.case:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 45%, var(--rule)); }
+.case-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.case-org { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+.case h3 { font-family: var(--display); font-weight: 750; font-size: 21px; line-height: 1.25; margin: 0; text-wrap: balance; }
+.case dl { margin: 0; display: grid; gap: 12px; }
+.case dt { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+.case dd { margin: 2px 0 0; font-size: 15px; line-height: 1.55; }
+.case .outcome { border-top: 1px dashed var(--rule); padding-top: 14px; font-weight: 600; font-size: 15px; }
+.case .outcome::before { content: "Result  "; font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .12em; color: var(--accent-ink); white-space: pre; }
+
+/* Experience */
+.timeline { display: grid; gap: 0; position: relative; }
+.job { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 32px; padding-block: 28px; position: relative; }
+.job + .job { border-top: 1px solid var(--rule); }
+.dates { font-family: var(--mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; line-height: 1.5; padding-top: 6px; }
+.dates b { display: block; font-family: var(--display); font-weight: 800; font-size: 28px; color: var(--fg); letter-spacing: -0.01em; margin-bottom: 4px; }
+.job h3 { font-family: var(--display); font-weight: 750; font-size: 23px; line-height: 1.2; margin: 0; }
+.org { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+.focus {
+  margin: 18px 0 0; padding: 14px 18px; background: var(--accent-soft); border-radius: 8px;
+  font-size: 15px; max-width: 64ch; border-left: 3px solid var(--accent);
+}
+ul.wins { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 11px; max-width: 66ch; }
+ul.wins li { position: relative; padding-left: 22px; }
+ul.wins li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border: 2px solid var(--accent); transform: rotate(45deg); }
+
+.fill {
+  background: var(--fill-bg); color: var(--fill-fg); border-radius: 3px; padding: 0 5px;
+  font-family: var(--mono); font-size: .86em; white-space: nowrap;
+}
+
+/* Skills + education */
+.split { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 56px; align-items: start; }
+.core { display: grid; gap: 12px; }
+.core-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; align-items: baseline; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.core-item strong { font-family: var(--display); font-weight: 700; font-size: 19px; }
+.core-item span { font-family: var(--mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.core-item p { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 14.5px; }
+.also { margin: 8px 0 0; color: var(--muted); font-size: 14.5px; }
+.also b { color: var(--fg); font-weight: 600; }
+.edu { display: grid; gap: 16px; }
+.edu-card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 22px 24px; display: grid; gap: 4px; }
+.edu-card .yr { font-family: var(--mono); font-size: 12.5px; color: var(--accent-ink); letter-spacing: .04em; }
+.edu-card h3 { font-family: var(--display); font-weight: 750; font-size: 20px; margin: 0; line-height: 1.25; }
+.edu-card p { margin: 0; color: var(--muted); font-size: 15px; }
+h3.sub { font-family: var(--mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); margin: 0 0 6px; }
+
+/* Contact band */
+.contact { background: var(--hero-bg); color: var(--hero-fg); border-radius: 14px; padding: 44px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px 40px; align-items: center; }
+.contact h2 { color: var(--hero-fg); margin: 0; }
+.contact p { margin: 8px 0 0; color: var(--hero-muted); max-width: 48ch; }
+footer { padding-block: 28px 48px; color: var(--muted); font-family: var(--mono); font-size: 12.5px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+/* Load-in: starts visible, only a gentle rise */
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .rise.d2 { animation-delay: .08s; } .rise.d3 { animation-delay: .16s; } .rise.d4 { animation-delay: .24s; }
+  @keyframes rise { from { transform: translateY(10px); } to { transform: none; } }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+@media (max-width: 900px) {
+  .cases { grid-template-columns: minmax(0, 1fr); }
+  .results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .result:nth-child(3) { border-left: 0; }
+  .result:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .split { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+  .contact { grid-template-columns: minmax(0, 1fr); padding: 32px 24px; }
+}
+@media (max-width: 560px) {
+  .hero .wrap { padding-block: 32px 60px; }
+  .job { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .dates b { display: inline; font-size: 22px; margin-right: 8px; }
+  .result { padding: 18px; }
+  .result b { font-size: 28px; }
+  main { gap: 72px; padding-block: 56px 32px; }
+  .case { padding: 22px; }
+}
+</style>
+
+</head>
+<body>
+<header class="hero">
+  <canvas id="terrain" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="topbar">
+      <span class="mark"><i></i>ANTONIO MARTINEZ</span>
+      <span class="status">Ventura County, CA</span>
+    </div>
+    <div class="rise">
+      <p class="title-line">Senior Principal Software Engineer · Northrop Grumman</p>
+      <h1>Antonio Martinez</h1>
+    </div>
+    <p class="intro rise d2">I build large C#/.NET desktop applications for defense software. <span>WPF and MVVM front ends, backend libraries other teams reuse, and the data layer underneath. Ten years in, now the go-to engineer for two subsystems several teams share.</span></p>
+    <div class="actions rise d3">
+      <button class="btn btn-primary" id="copy-email" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        <span id="copy-label">Copy email</span>
+      </button>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/antonioamartinez/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11.25H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5c0-1.2-.02-2.73-1.66-2.73-1.67 0-1.92 1.3-1.92 2.64V21h-4z"/></svg>
+        LinkedIn
+      </a>
+      <span class="email-text" id="email">antonio.martinez.dev@gmail.com</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap results">
+  <div class="results-grid rise d4" role="list">
+    <div class="result" role="listitem"><b>16h<em>→</em>7m</b><span>Processing time after rewriting a slow application path</span></div>
+    <div class="result" role="listitem"><b>−40<em>%</em></b><span>Database query time from SQL and Entity Framework tuning</span></div>
+    <div class="result" role="listitem"><b>−30<em>%</em></b><span>Defect rate after mentoring four junior developers</span></div>
+    <div class="result" role="listitem"><b>5 <em>groups</em></b><span>Will rely on the next-generation platform I help shape</span></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section aria-labelledby="work-h">
+    <p class="eyebrow">Selected work</p>
+    <h2 id="work-h">Problems I've owned, start to finish</h2>
+    <div class="cases">
+      <article class="case">
+        <div class="case-top"><span class="case-org">Northrop Grumman</span><span class="case-org">2025 to now</span></div>
+        <h3>Automating a manual setup step</h3>
+        <dl>
+          <div><dt>Problem</dt><dd>A setup step in a large WPF desktop application was done by hand.</dd></div>
+          <div><dt>What I did</dt><dd>Built the automation as a standalone backend library with a separate WPF/MVVM front end, so the logic isn't tied to one screen or one team.</dd></div>
+        </dl>
+        <p class="outcome">The step now runs on its own, from a library other teams can reuse.</p>
+      </article>
+      <article class="case">
+        <div class="case-top"><span class="case-org">NAVAIR</span><span class="case-org">2016 to 2025</span></div>
+        <h3>A 16-hour job down to 7 minutes</h3>
+        <dl>
+          <div><dt>Problem</dt><dd>An application took 16 hours to finish its processing run.</dd></div>
+          <div><dt>What I did</dt><dd>Refactored the code and added performance improvements where the time was going.</dd></div>
+        </dl>
+        <p class="outcome">16 hours became 7 minutes.</p>
+      </article>
+      <article class="case">
+        <div class="case-top"><span class="case-org">Northrop Grumman</span><span class="case-org">2026 to now</span></div>
+        <h3>Shared code for five groups</h3>
+        <dl>
+          <div><dt>Problem</dt><dd>Three internal teams, an external partner team and the customer all depend on the same subsystems in a next-generation platform.</dd></div>
+          <div><dt>What I did</dt><dd>Became the specialist and escalation point for those subsystems, through design reviews, defect triage and onboarding.</dd></div>
+        </dl>
+        <p class="outcome">One point of contact for every group that builds on them.</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="exp-h">
+    <p class="eyebrow">Experience</p>
+    <h2 id="exp-h">Ten years building defense software</h2>
+    <div class="timeline">
+      <article class="job">
+        <div class="dates"><b>2025</b>May 2025 to now</div>
+        <div>
+          <h3>Senior Principal Software Engineer</h3>
+          <p class="org">Northrop Grumman · Camarillo, CA</p>
+          <p class="focus">Since 2026, the cross-team specialist for two shared subsystems of a large C#/.NET desktop application.</p>
+          <ul class="wins">
+            <li>Replaced a manual setup step by building an automation feature for a large C#/.NET WPF application.</li>
+            <li>Designed it as a standalone backend library with a separate WPF/MVVM front end, so other teams can reuse the logic.</li>
+            <li>Help shape the next-generation platform that three other internal teams, an external partner team and the customer will rely on.</li>
+            <li>Serve as the team's escalation point for architecture and debugging, through design reviews and defect resolution.</li>
+            <li>Run sprint planning, reviews and retrospectives as the team's Scrum Master.</li>
+            <li>Mentor three engineers through Northrop Grumman's formal mentoring program.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div class="dates"><b>2016</b>Jun 2016 to 2025</div>
+        <div>
+          <h3>Senior Computer Engineer</h3>
+          <p class="org">NAVAIR · Point Mugu, CA</p>
+          <ul class="wins">
+            <li>Promoted to senior software developer within five years.</li>
+            <li>Cut an application's processing time from 16 hours to 7 minutes by refactoring and performance tuning.</li>
+            <li>Reduced database query times by 40% through SQL tuning and Entity Framework optimization.</li>
+            <li>Built a proof of concept for a system upgrade in three months, which moved up project approval and the implementation schedule.</li>
+            <li>Mentored four junior developers on .NET practices, coding standards and continuous integration. Defect rates dropped 30%.</li>
+            <li>Designed WPF interfaces that cut task completion time by 20%.</li>
+            <li>Led Agile sprints with engineers, analysts and product owners to ship releases on time.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="skills-h">
+    <p class="eyebrow">Skills and education</p>
+    <h2 id="skills-h">What I work in every day</h2>
+    <div class="split">
+      <div>
+        <h3 class="sub">Core</h3>
+        <div class="core">
+          <div class="core-item"><strong>C# and .NET</strong><span>since 2016</span><p>Large desktop applications, reusable libraries, unit testing with MSTest.</p></div>
+          <div class="core-item"><strong>WPF and MVVM</strong><span>since 2016</span><p>Data-heavy UIs built on bindings, commands and behaviors.</p></div>
+          <div class="core-item"><strong>SQL and Entity Framework Core</strong><span>PostgreSQL</span><p>Schema work and query tuning for applications under real load.</p></div>
+          <div class="core-item"><strong>Python and machine learning</strong><span>M.S. work</span><p>scikit-learn, Databricks and AWS from graduate study.</p></div>
+        </div>
+        <p class="also"><b>Also:</b> C++, Git, Docker, Agile and Scrum.</p>
+      </div>
+      <div>
+        <h3 class="sub">Education</h3>
+        <div class="edu">
+          <div class="edu-card">
+            <span class="yr">2022 to 2025</span>
+            <h3>Master's in Data Science</h3>
+            <p>University of California, Berkeley. Machine learning, data engineering, applied statistics.</p>
+          </div>
+          <div class="edu-card">
+            <span class="yr">2007 to 2016</span>
+            <h3>B.S. Computer Engineering</h3>
+            <p>California State University, Northridge. Senior project: image processing for an autonomous UAV.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="contact-h">
+    <div class="contact">
+      <div>
+        <h2 id="contact-h">Let's talk</h2>
+        <p>Email is the fastest way to reach me.</p>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" id="copy-email-2" type="button">Copy email</button>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/antonioamartinez/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer><span>Antonio Martinez</span><span>Updated November 2026</span></footer>
+</div>
+
+<script>
+(function () {
+  var email = document.getElementById('email').textContent.trim();
+  function bind(id, labelEl) {
+    var btn = document.getElementById(id); if (!btn) return;
+    var label = labelEl || btn;
+    btn.addEventListener('click', function () {
+      function done(msg) { var old = label.textContent; label.textContent = msg; setTimeout(function () { label.textContent = 'Copy email'; }, 1800); }
+      function fallback() {
+        var el = document.getElementById('email'), r = document.createRange(); r.selectNodeContents(el);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); done('Selected');
+      }
+      try { navigator.clipboard.writeText(email).then(function () { done('Copied'); }, fallback); } catch (e) { fallback(); }
+    });
+  }
+  bind('copy-email', document.getElementById('copy-label'));
+  bind('copy-email-2');
+
+  /* Terrain contours: stacked lines displaced by layered sine noise, like a relief chart. */
+  var c = document.getElementById('terrain'); if (!c || !c.getContext) return;
+  var ctx = c.getContext('2d'), w = 0, h = 0, dpr = 1, t = 0;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = c.clientWidth; h = c.clientHeight;
+    c.width = Math.round(w * dpr); c.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function field(x, y, t) {
+    return Math.sin(x * 0.006 + t * 0.6) * 18
+         + Math.sin(x * 0.013 - y * 0.004 + t * 0.35) * 11
+         + Math.sin(x * 0.0021 + y * 0.009 + t * 0.2) * 26
+         + Math.sin(x * 0.031 + t) * 3;
+  }
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    var gap = 14, rows = Math.ceil(h / gap) + 6;
+    for (var i = 0; i < rows; i++) {
+      var y0 = i * gap - 30;
+      var major = i % 5 === 0;
+      ctx.beginPath();
+      for (var x = 0; x <= w + 8; x += 8) {
+        var y = y0 + field(x, y0, t);
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = major ? 'rgba(232,89,12,0.38)' : 'rgba(80,120,170,0.30)';
+      ctx.lineWidth = major ? 1.2 : 0.8;
+      ctx.stroke();
+    }
+  }
+  function loop() { t += 0.0035; draw(); if (!still) requestAnimationFrame(loop); }
+  size(); draw();
+  window.addEventListener('resize', function () { size(); draw(); });
+  if (!still) requestAnimationFrame(loop);
+})();
+</script>
+
+</body>
+</html>
